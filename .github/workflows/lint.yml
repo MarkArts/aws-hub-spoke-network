@@ -1,0 +1,56 @@
+name: lint
+
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  - pull_request
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prettier:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+
+  # This is commented out as i don't have a aws account i want to link to this public repository
+  # this assumed you haev a OICD policy in aws that will allow github to assume a role capable of
+  # deploying the resources
+  #
+  # pulumi-preview:
+  #   runs-on: [ubuntu-latest]
+  #   if: github.base_ref  == 'main'
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 20.x
+  #         cache: npm
+  #     - uses: unfor19/install-aws-cli-action@v1
+  #       with:
+  #         version: 2
+
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v2
+  #       with:
+  #         aws-region: eu-central-1
+  #         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+
+  #     - run: cd pulumi && npm ci
+  #     - uses: pulumi/actions@v4
+  #       with:
+  #         work-dir: pulumi
+  #         command: preview
+  #         stack-name: example
+  #       env:
+  #         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}

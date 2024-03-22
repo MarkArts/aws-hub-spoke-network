@@ -1,0 +1,6 @@
+kubeconfig.yml
+/bin/
+node_modules
+*rsa*
+*bots*
+!*.pub

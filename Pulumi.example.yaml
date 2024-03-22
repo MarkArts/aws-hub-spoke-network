@@ -1,0 +1,32 @@
+config:
+  # These are the accounts pulumi is allowed to deploy this stack in
+  # make sure to set this to prevent accidental deployments
+  # aws:allowedAccountIds:
+  #   - "424242424242"
+
+  # These are the accounts that will be allowed to connect to the hub-spoke network
+  # this should contain a list of the aws account ids you are using
+  ahsn:allowdAccountIds:
+    - "111111111111"
+    - "222222222222"
+    - "333333333333"
+
+  # This should contain the networks you are expecting to use this hub-spoke network
+  # make sure there are no overlapping ip ranges as in a hub-spoke configuration this is not
+  # allowed
+  ahsn:regions:
+    - region: eu-central-1
+      routes:
+        - "10.0.0.0/16"
+        - "10.1.0.0/16"
+        - "10.2.0.0/16"
+    - region: eu-west-1
+      routes:
+        - "10.3.0.0/16"
+        - "10.4.0.0/16"
+        - "10.5.0.0/16"
+    - region: us-east-1
+      routes:
+        - "10.6.0.0/16"
+        - "10.7.0.0/16"
+        - "10.8.0.0/16"
