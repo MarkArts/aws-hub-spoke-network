@@ -11,7 +11,7 @@ type RegionInfo = {
   routes: string[];
 };
 
-// it's important that to list of regions remains in the same order this will make sure pulumi will
+// it's important that the list of regions remains in the same order this will make sure pulumi will
 // correctly seperate the resources
 const sortByRegionName = (a: RegionInfo, b: RegionInfo) => {
   if (a.region < b.region) {
