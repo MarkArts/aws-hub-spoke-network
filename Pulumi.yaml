@@ -1,3 +1,3 @@
 name: ahsn
 runtime: nodejs
-description: Deploys a hub-spoke network within aws for private subents to connect to eachother
+description: Deploys a hub-spoke network within aws for private subnets to connect to eachother
