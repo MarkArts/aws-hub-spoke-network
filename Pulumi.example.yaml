@@ -6,7 +6,7 @@ config:
 
   # These are the accounts that will be allowed to connect to the hub-spoke network
   # this should contain a list of the aws account ids you are using
-  ahsn:allowdAccountIds:
+  ahsn:allowedAccountIds:
     - "111111111111"
     - "222222222222"
     - "333333333333"
