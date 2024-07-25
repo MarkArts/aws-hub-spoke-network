@@ -1,9 +1,4 @@
 config:
-  # These are the accounts pulumi is allowed to deploy this stack in
-  # make sure to set this to prevent accidental deployments
-  # aws:allowedAccountIds:
-  #   - "424242424242"
-
   # These are the accounts that will be allowed to connect to the hub-spoke network
   # this should contain a list of the aws account ids you are using
   ahsn:allowedAccountIds:
